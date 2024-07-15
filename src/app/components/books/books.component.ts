@@ -1,0 +1,35 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Book } from '../../Book';
+
+@Component({
+  selector: 'app-books',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './books.component.html',
+  styleUrl: './books.component.css'
+})
+export class BooksComponent {
+  books: Book[] = [
+    {
+      id: 1,
+      title: "first title",
+      author: "Leo",
+      price: 29.90,
+    },
+    {
+      id: 2,
+      title: "SECOND title",
+      author: "AUTOR 2",
+      price: 39.90,
+    },
+    {
+      id: 3,
+      title: "third title",
+      author: "AUTOR 3",
+      price: 49.90,
+    }
+  ];
+}
+
+
