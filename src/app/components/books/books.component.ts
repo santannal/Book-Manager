@@ -12,32 +12,31 @@ import { BookComponent } from "../book/book.component";
 })
 export class BooksComponent {
   newBook: Book = {} as Book;
+  isUpdate: boolean = false;
+  idCount: number = 1;
 
-  books: Book[] = [
-    {
-      id: 1,
-      title: "first title",
-      author: "Leo",
-      price: 29.90,
-    },
-    {
-      id: 2,
-      title: "SECOND title",
-      author: "AUTOR 2",
-      price: 39.90,
-    },
-    {
-      id: 3,
-      title: "third title",
-      author: "AUTOR 3",
-      price: 49.90,
-    }
-  ];
+
+  books: Book[] = [];
 
   saveBook() {
-    this.newBook.id = this.books.length + 1;
-    this.books.push(this.newBook);
+    if (!this.isUpdate) {
+      this.newBook.id = this.idCount;
+      this.idCount++;
+      this.books.push(this.newBook);
+    }
+    this.isUpdate = false;
     this.newBook = {} as Book;
+  }
+
+  update(book: Book) {
+    this.newBook = book;
+    this.isUpdate = true
+    //console.log("Update book: " + book.title);
+  }
+
+  remove(removeBook: Book) {
+    this.books = this.books.filter(b => b !== removeBook);
+    this.books.length + 1;
   }
 }
 

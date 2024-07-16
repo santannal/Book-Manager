@@ -8,6 +8,7 @@
                 <th scope="col">Title</th>
                 <th scope="col">Author</th>
                 <th scope="col">Price</th>
+                <th scope="col">Options</th>
             </tr>
         </thead>
         <tbody>
@@ -16,6 +17,10 @@
                 <td>{{book.title}}</td>
                 <td>{{book.author}}</td>
                 <td>{{book.price}}</td>
+                <td>
+                    <button class="btn btn-primary me-3" (click)="update(book)">Alterar</button>
+                    <button class="btn btn-danger" (click)="remove(book)">Excluir</button>
+                </td>
             </tr>
         </tbody>
     </table>
