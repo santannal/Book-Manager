@@ -1,15 +1,18 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Book } from '../../Book';
+import { BookComponent } from "../book/book.component";
 
 @Component({
   selector: 'app-books',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, BookComponent],
   templateUrl: './books.component.html',
   styleUrl: './books.component.css'
 })
 export class BooksComponent {
+  newBook: Book = {} as Book;
+
   books: Book[] = [
     {
       id: 1,
@@ -30,6 +33,12 @@ export class BooksComponent {
       price: 49.90,
     }
   ];
+
+  saveBook() {
+    this.newBook.id = this.books.length + 1;
+    this.books.push(this.newBook);
+    this.newBook = {} as Book;
+  }
 }
 
 

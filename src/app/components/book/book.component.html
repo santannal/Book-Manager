@@ -1,27 +1,26 @@
 <div class="container">
     <h3>Cadastro</h3>
-    <form>
+    <form #formBook="ngForm">
         <div class="row">
-            <label for="title" class="col-form-label">Titulo: </label>
+            <label for="title" class="form-label">Título: </label>
         </div>
         <div>
-            <input type="text" class="form-control" name="title" required>
+            <input type="text" class="form-control" [(ngModel)]="book.title" name="title" id="title" required>
         </div>
         <div class="row">
-            <label for="author" class="col-form-label">Autor: </label>
+            <label for="author" class="form-label">Autor: </label>
         </div>
         <div>
-            <input type="text" class="form-control" name="author" required>
+            <input type="text" class="form-control" [(ngModel)]="book.author" name="author" id="author" required>
         </div>
         <div class="row">
-            <label for="price" class="col-form-label">Preço: </label>
+            <label for="price" class="form-label">Preço: </label>
         </div>
         <div>
-            <input type="text" class="form-control" name="price" required>
+            <input type="text" class="form-control" [(ngModel)]="book.price" name="price" id="price" required>
         </div>
-
         <div class="col mt-3">
-            <button class="btn btn-primary">Salvar</button>
+            <button class="btn btn-primary" (click)="save()" [disabled]="formBook.invalid">Salvar</button>
         </div>
     </form>
 </div>

@@ -1,19 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Book } from '../../Book';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-book',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './book.component.html',
   styleUrls: ['./book.component.css']
 })
 export class BookComponent {
-  book: Book = {
-    id: 1,
-    title: 'Leonardo',
-    author: 'Santanna',
-    price: 50.00
-  };
+  @Input()
+  book: Book = {} as Book;
+
+  @Output()
+  saveEmitter = new EventEmitter();
+  save() {
+    this.saveEmitter.emit()
+  }
 }
